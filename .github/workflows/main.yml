@@ -42,7 +42,8 @@ jobs:
           chmod 600 deploy_key
           rsync -avz \
             --delete \
-            --omit-dir-times \
+            --omit-dir-times \ 
+            --no-perms \
             --exclude='.git*' \
             -e "ssh -i deploy_key -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -p ${{ secrets.SERVER_PORT || '22' }}" \
             ./dist/ \
