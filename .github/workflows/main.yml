@@ -40,7 +40,7 @@ jobs:
         run: |
           echo "$SSH_KEY" > deploy_key
           chmod 600 deploy_key
-          rsync -avz \
+          rsync -rvz \
             --delete \
             --exclude='.git*' \
             -e "ssh -i deploy_key -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -p ${{ secrets.SERVER_PORT || '22' }}" \
